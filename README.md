@@ -4,11 +4,16 @@
 详情可见
 [http/2深入学习](https://github.com/liujiusheng/blog/issues/87)
 
-#启动方法
+# 启动方法
+
 1.clone代码到Tomcat,Nginx,Apache或IIS目录下，并启动服务器
+
 2.命令行内切换到http2test文件夹
+
 3.运行node index.js命令启动后端服务
+
 4.浏览器内访问index.html页面
+
 
 ## 测试结果：
 因为本地加载实在太快，为尽量模拟生产环境网络情况，以下测试都是使用Chrome的fast3G模式。
