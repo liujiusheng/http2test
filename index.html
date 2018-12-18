@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>http2测试</title>
+        <script src="./http.js"></script>
+    </head>
+    <body>
+        加载小图片测试：
+<div id="imgContainer"></div>
+    </body>
+    <script>
+        for(var i=1; i<40; i++){
+            // GET('https://localhost:8443/'+i+'.png',function(response){
+            //     drawImg(response);
+            // });
+
+            // GET('http://localhost:8080/http2test/maximg/'+i+'.png',function(response){
+            //     drawImg(response);
+            // });
+
+            var myImage = new Image();
+            myImage.src = 'https://localhost:8443/'+i+'.png';
+            document.body.appendChild(myImage);
+
+            // var myImage = new Image();
+            // myImage.src = 'http://localhost:8080/http2test/maximg/'+i+'.png';
+            // document.body.appendChild(myImage);
+
+            
+        }
+
+
+        function drawImg(data){
+            var img = new Image();
+            console.log(data,new window.Blob([data], { type: 'image/png' }));
+            img.src = window.URL.createObjectURL(data);
+            img.onload = function(){
+                window.URL.revokeObjectURL(img.src);
+            }
+            document.body.appendChild(img);
+        }
+        
+    </script>
+</html>
