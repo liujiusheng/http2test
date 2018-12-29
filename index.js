@@ -9,9 +9,11 @@ server.on('error', (err) => console.error(err));
 server.on('socketError', (err) => console.error(err));
 
 server.on('request', (request, response) => {
-    //console.log('./minimg'+request.url);
+    console.log(request.url);
     
     //格式必须为 binary 否则会出错'./images'+request.url
+    // 浏览器第一次会请求favicon.ico，会导致报错
+    if(request.url !='/favicon.ico'){
     var content =  fs.readFileSync('./maximg'+request.url);   
     response.writeHead(200, {
         "Content-Type": "image/png",
@@ -20,6 +22,7 @@ server.on('request', (request, response) => {
     });
     response.write(content); //格式必须为 binary，否则会出错
     response.end();
+}
 });
 
-server.listen(8443);
+server.listen(8444);
